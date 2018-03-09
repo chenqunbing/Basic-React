@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+		<script src="../js/browser.min.js"></script>
+		<style type="text/css">
+			html,body,#example{
+				width: 100%;
+				height: 100%;
+			}
+			.SplitPane{
+				width: 100%;
+				height: 100%;
+			}
+			.SplitLeft{
+				float: left;
+				width: 30%;
+				height: 100%;
+			}
+			.SplitRight{
+				float: left;
+				width: 70%;
+				height: 100%;
+			}
+			.concat{
+				width: 100%;
+				height: 100%;
+				background: blue;
+			}
+			.chat{
+				width: 100%;
+				height: 100%;
+				background: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="example"></div>
+		<script type="text/babel">
+			
+			function FancyBorder(props){
+				return (
+					<div className={'FancyBorder FancyBorder-'+props.color}>{props.children}</div>
+				);
+			}
+			function WelcomeDialog(){
+				return (
+					<FancyBorder color='blue'>
+						<h1 className='dialog-title'>Welcome!</h1>
+						<p className='dialog-message'>Thank you for visiting our space!</p>
+					</FancyBorder>
+				);
+			}
+			ReactDOM.render(<WelcomeDialog />,document.getElementById("example"));
+			
+			
+			
+//			function Concat(){
+//				return <div className='concat'></div>
+//			}
+//			function Chat(){
+//				return <div className='chat'></div>
+//			}
+//			function SplitPane(props){
+//				return (
+//					<div className="SplitPane">
+//						<div className="SplitLeft">{props.left}</div>
+//						<div className="SplitRight">{props.right}</div>
+//					</div>
+//				)
+//			}
+//			function App(){
+//				return (
+//					<SplitPane left={<Concat />} right={<Chat />} />
+//				)
+//			}
+//			ReactDOM.render(<App />,document.getElementById("example"));
+
+			
+		</script>
+	</body>
+</html>

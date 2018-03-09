@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+		<script src="../js/browser.min.js"></script>
+	</head>
+	<body>
+		<div id="example"></div>
+		<script type="text/babel">
+			class Login extends React.Component{
+				constructor(props){
+					super(props);
+					this.state={login:false}
+				}
+				render(){
+					return (
+						<h1>The person {this.state.login?'currently':'not'} logged!</h1>
+					)
+				}
+			}
+			ReactDOM.render(<Login />,document.getElementById("example"))
+		</script>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+		<script src="../js/browser.min.js"></script>
+	</head>
+	<body>
+		<div id="example"></div>
+		<script type="text/babel">
+			const numbers=[1,2,3,4,5];
+			const listItem=numbers.map(num=>
+				<li>{num}</li>
+			)
+//			ReactDOM.render(<ul>{listItem}</ul>,document.getElementById("example"));
+			
+			function NumberList(props){
+				const numbers=props.numbers;
+				const itemList=numbers.map(num=>
+					<li key={num.toString()}>{num}</li>
+				)
+				return (
+					<ul>{itemList}</ul>
+				)
+			}
+			ReactDOM.render(<NumberList numbers={numbers} />,document.getElementById("example"));
+		</script>
+		<!--<script type="text/javascript">
+			//js中的列表
+			var numbers=[1,2,3,4];
+			var double=numbers.map(num=>num*2);
+//			var double=numbers.map(function(number){
+//				return number*2;
+//			})
+			console.log(double);
+		</script>-->
+	</body>
+</html>

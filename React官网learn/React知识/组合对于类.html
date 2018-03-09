@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+		<script src="../js/browser.min.js"></script>
+	</head>
+	<body>
+		<div id="example"></div>
+		<script type="text/babel">
+			function FancyBorder(props){
+				return (
+					<div>{props.children}</div>
+				)
+			}
+			function Dialog(props){
+				return (
+					<FancyBorder>
+						<h1>{props.title}</h1>
+						<p>{props.message}</p>
+						{props.children}
+					</FancyBorder>
+				)
+			}
+			class SignUpDialog extends React.Component{
+				constructor(props){
+					super(props);
+					this.state={value:''}
+					this.handleClick=this.handleClick.bind(this);
+					this.handleChange=this.handleChange.bind(this);
+				}
+				handleChange(event){
+					this.setState({value:event.target.value});
+				}
+				handleClick(){
+					alert("Welcome to "+this.state.value)
+				}
+				render(){
+					return (
+						<Dialog title="Mars Exploration Program" message="How should we refer to you?">
+							<input type="text" value={this.state.value} onChange={this.handleChange}/>
+							<button onClick={this.handleClick}>Sign me up!</button>
+						</Dialog>
+					)
+				}
+			}
+			ReactDOM.render(<SignUpDialog />,document.getElementById("example"));
+		</script>
+	</body>
+</html>

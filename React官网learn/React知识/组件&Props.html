@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+		<script src="../js/browser.min.js"></script>
+	</head>
+	<body>
+		<div id="example"></div>
+		<script type="text/babel">
+			
+			//组件渲染
+//			function Welcome(props){
+//				return <h1>hello,{props.name}</h1>
+//			}
+//			const element=<Welcome name="Mike" />;
+//			ReactDOM.render(element,document.getElementById("example"));
+			
+			//组合组件
+//			function Welcome(props){
+//				return <h1>Hello,{props.name}</h1>;
+//			}
+//			function App(){
+//				return (
+//					<div>
+//						<Welcome name="Lili" />
+//						<Welcome name="Mike" />
+//						<Welcome name="Jhon" />
+//					</div>
+//				);
+//			}
+//			
+//			ReactDOM.render(<App />,document.getElementById("example"));
+			
+			//提取组件
+			function formateDate(date){
+				return date.toLocaleDateString();
+			}
+			function Comment(props){
+				return (
+					<div className="Commet">
+					
+						<div className="UserInfo">
+							<img className="Avatar" src={props.author.avatarUrl} alt={props.author.name} />
+							<div className="UserInfo-name">{props.author.name}</div>
+						</div>
+						
+						<div className="Comment-text">{props.text}</div>
+						
+						<div className="Comment-date">{formateDate(props.date)}</div>
+					</div>
+				);
+			}
+			
+			
+			const commet={
+				author:{
+					name:"Lili",
+					avatarUrl:'http://placekitten.com/g/64/64'
+				},
+				date:new Date(),
+				text:"React React"
+			};
+			
+			
+			ReactDOM.render(<Comment date={commet.date} text={commet.text}  author={commet.author} />,document.getElementById("example"));
+		</script>
+	</body>
+</html>

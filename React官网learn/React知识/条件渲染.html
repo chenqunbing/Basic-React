@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+		<script src="../js/browser.min.js"></script>
+	</head>
+	<body>
+		<div id="example"></div>
+		<script type="text/babel">
+			function UserGreeting(){
+				return <h1>Welcome back!</h1>
+			}
+			function GustGreeting(){
+				return <h1>Sign up!</h1>
+			}
+			function Greeting(props){
+				var isLogin=props.isLogin;
+				if(isLogin){
+					return <UserGreeting />
+				}else{
+					return <GustGreeting />
+				}
+			}
+//			ReactDOM.render(<Greeting isLogin={false}/>,document.getElementById("example"));
+			
+			//登入或者退出的选择
+			function LoginButton(props){
+				return (
+					<button onClick={props.onClick}>Login!</button>
+				);
+			}
+			function LogoutButton(props){
+				return (
+					<button onClick={props.onClick}>Logout!</button>
+				);
+			}
+			class ControlLog extends React.Component{
+				constructor(props){
+					super(props);
+					this.state={isLogin:false};
+					this.LogoutClick=this.LogoutClick.bind(this);
+					this.LoginClick=this.LoginClick.bind(this);
+				}
+				LogoutClick(){
+					this.setState({isLogin:false});
+				}
+				LoginClick(){
+					this.setState({isLogin:true});
+				}
+				render(){
+					const Login=this.state.isLogin;
+					let button=null;
+					if(Login){
+						button=<LogoutButton onClick={this.LogoutClick}/>;
+					}else{
+						button=<LoginButton onClick={this.LoginClick} />;
+					}
+					
+					return (
+						<div>
+							<Greeting isLogin={Login} />
+							{button}
+						</div>
+					);
+				}
+				
+			
+			}
+			ReactDOM.render(<ControlLog />,document.getElementById("example"));
+		</script>
+	</body>
+</html>

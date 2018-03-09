@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+		<script src="../js/browser.min.js"></script>
+	</head>
+	<body>
+		<div id="example"></div>
+		<script type="text/babel">
+			function getInfo(user){
+				return user.name+","+user.age;
+			}
+			var user={
+				name:"Mike",
+				age:12
+			};
+//			var user=''; //这个时候返回stanger
+			function greeting(user){
+				if(user){ //user有值且不为false
+					return getInfo(user);
+				}else{ 
+					return "Stanger";
+				}
+			}
+			 const element=(
+			 	<div>Hello,{greeting(user)}</div>
+			 );
+			 ReactDOM.render(element,document.getElementById("example"));
+
+		</script>
+	</body>
+</html>

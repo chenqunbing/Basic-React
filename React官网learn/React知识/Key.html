@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+		<script src="../js/browser.min.js"></script>
+	</head>
+	<body>
+		<div id="example"></div>
+		<script type="text/babel">
+//			function LiItem(props){
+//				return <li>{props.value}</li>
+//			}
+//			function NumberList(props){
+//				const numbers=props.numbers;
+//				const itemList=numbers.map(num=>
+//					<LiItem key={num.toString()} value={num}/>
+//				)
+//				return <ul>{itemList}</ul>
+//			}
+//			const numbers=[1,2,3,4,5];
+//			ReactDOM.render(<NumberList numbers={numbers}/>,document.getElementById("example"));
+			
+			function Blog(props){
+				const posts=props.posts;
+				const topBar=(
+					<ul>
+						{posts.map(post=>
+							<li key={post.id}>{post.title}</li>
+						)}
+					</ul>
+				);
+				const content=posts.map(post=>
+					<div key={post.id}>
+						<h3>{post.title}</h3>
+						<h4>{post.content}</h4>
+					</div>
+				);
+				return (
+					<div>
+						{topBar}
+						<hr />
+						{content}
+					</div>
+				);
+			}
+			
+			const posts=[
+				{id:1,title:"hello World",content:"Welcome to learn React!"},
+				{id:2,title:"Installation",content:"You can install react from npm!"}
+			];
+			ReactDOM.render(<Blog posts={posts} />,document.getElementById("example"));
+		</script>
+	</body>
+</html>

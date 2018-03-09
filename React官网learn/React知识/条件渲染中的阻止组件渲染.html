@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+		<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+		<script src="../js/browser.min.js"></script>
+		<style type="text/css">
+			.warning{
+				height: 100px;
+				width: 100%;
+				text-align: center;
+				background-color: red;
+				font-size: 24px;
+				color: #000;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="example"></div>
+		<script type="text/babel">
+			function WarningBanner(props){
+				if(!props.warning){
+					return null;
+				}
+				return (
+					<div className="warning">Warning!</div>
+				)
+			}
+			class Page extends React.Component{
+				constructor(props){
+					super(props);
+					this.state={showWarn:true};
+					this.toggleClick=this.toggleClick.bind(this);
+				}
+				toggleClick(){
+					this.setState({showWarn:!this.state.showWarn});
+				}
+				render(){
+					return (
+						<div>
+							<WarningBanner warning={this.state.showWarn}/>
+							<button onClick={this.toggleClick}>{this.state.showWarn?'hide':'show'}</button>
+						</div>
+					)
+				}
+			}
+			ReactDOM.render(<Page />,document.getElementById("example"))
+		</script>
+	</body>
+</html>
